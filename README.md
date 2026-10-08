@@ -12,6 +12,8 @@ style.css                     shared look (light and dark)
 app-ads.txt                   one line, covers every app (needs the AdMob publisher id)
 dangle/index.html             app page
 dangle/privacy-policy.html    privacy policy of Dangle
+atomforge/index.html          app page of Atom Forge
+atomforge/privacy-policy.html privacy policy of Atom Forge
 templates/                    NOT published: copy for each new app (do not upload)
 ```
 
@@ -23,14 +25,13 @@ describe what that app really does.
 
 | Placeholder | Replace with |
 |---|---|
-| `{{STUDIO}}` | your studio / brand name |
-| `{{EMAIL}}` | the public contact e-mail |
+| `{{EMAIL}}` | the contact e-mail (only inside the `mailto:` links, shown to visitors as "Send us an e-mail") |
 | `{{PUB_ID}}` | AdMob publisher id, `pub-0000000000000000` (AdMob → Settings → Account information); only in `app-ads.txt` |
 
 On a computer with a terminal, from this folder:
 
 ```
-sed -i 's/{{STUDIO}}/My Studio/g; s/{{EMAIL}}/hello@example.com/g' index.html dangle/*.html templates/*.html
+sed -i 's/{{EMAIL}}/hello@example.com/g' index.html dangle/*.html atomforge/*.html templates/*.html
 sed -i 's/{{PUB_ID}}/pub-0000000000000000/' app-ads.txt
 ```
 
@@ -45,4 +46,8 @@ Or use the editor's find-and-replace before pasting the files into GitHub.
 3. Settings → Pages → *Deploy from a branch* → `main` / `(root)`.
 4. Check in a private window: `/`, `/app-ads.txt`, `/dangle/privacy-policy.html`.
 5. Use `https://<username>.github.io/dangle/privacy-policy.html` as the privacy
-   policy URL in Play Console and in the app (`lib/app_info.dart`).
+   policy URL in Play Console and in the app (`lib/app_info.dart`). For Atom Forge it
+   is `https://<username>.github.io/atomforge/privacy-policy.html`.
+
+The e-mail address is already filled in (inside the `mailto:` links only; visitors
+just see the words "Send us an e-mail"). Only `{{PUB_ID}}` in `app-ads.txt` is left.
